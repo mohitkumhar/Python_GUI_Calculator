@@ -1,4 +1,7 @@
 from tkinter import *
+import os
+
+
 root = Tk()
 
 def action(event):
@@ -31,7 +34,14 @@ def backspace(event):
 root.geometry('800x700')
 root.config(bg='grey')
 root.title('Calculator By - Mohit Kumhar')
-root.iconbitmap('calculator.ico')
+
+try:
+    icon_path = os.path.join(os.path.dirname(__file__), 'calculator.ico')
+    root.iconbitmap(icon_path)
+except Exception as e:
+    print(f"Icon loading error: {e}")
+
+# root.iconbitmap('calculator.ico')
 
 head = Label(root, text='Calculator', font='roboto 27 italic')
 head.pack()
